@@ -374,7 +374,7 @@
                 note.classList.add('collapsed');
             }
             
-            const color = data.color || '#f1c40f';
+            const color = data.color || '#EEEE00';
             const title = data.title || '';
             const text = data.text || '';
             const timestamp = data.timestamp || new Date().toLocaleString();
@@ -463,7 +463,7 @@
 
             const textArea = document.createElement('textarea');
             textArea.classList.add('note-body');
-            textArea.placeholder = 'Write your note here...';
+            textArea.placeholder = 'Write here...';
             textArea.value = text;
             textArea.addEventListener('input', saveNotes);
             textArea.addEventListener('focus', bringToFront); 
@@ -534,11 +534,14 @@
                     });
                     
                     highestZIndex = savedNotes.length + 1;
-                    return; 
+                    return;
                 }
             }
             
-            createNote();
+            data = {};
+            data.title = "ⓘ Information"
+            data.text = "Create and save your sticky notes here.\nAs there are no servers, your data is saved in the local storage and never leaves your device. So, it is private, safe, and free for all kinds of usage."
+            createNote(data);
         }
 
         addBtn.addEventListener('click', () => createNote());
